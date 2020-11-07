@@ -1,0 +1,60 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      楽しみを増やす
+    </h2>
+    <p class='service-explain'>
+      HoobyRingは趣味を見つける
+    </p>
+    <p class='service-explain'>
+      複合アプリです
+    </p>
+    <div class='store-btn'>
+      <%= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+    </div>
+  </div>
+  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+  <%# 投稿一覧 %>
+  <div class='post-contents'>
+    <h2 class='title'>TOP TOPICS</h2>
+    <%= link_to '新規投稿',new_post_path, class: "subtitle" %>
+    <ul class='post-lists'>
+
+    <% @post.each do |post| %>
+      <% if post.video.attached? %>
+        <li class='list'>
+        <div class='post-img-content'>
+          <video src="<%= rails_blob_path(post.video) %>" type="video/mp4" controls class = "post-video"></video>
+        </div>
+        <%# else if post.imag.attached?%>
+        <%end%>
+        <div class='post-info'>
+          <h3 class='post-name'>
+            <%= link_to post.text %>
+          </h3>
+          <div class='post-price'>
+             <span><%#= item.selling_price %>円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%#= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <%# /商品一覧 %>
+</div>
+<div class='purchase-btn'>
+  <%= link_to '投稿する',new_post_path , class: "purchase-btn-text" %>
+    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  </a>
+</div>
+<%= render "shared/footer" %>
