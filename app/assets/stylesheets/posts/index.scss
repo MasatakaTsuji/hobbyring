@@ -6,7 +6,7 @@ a {
   background: #f8f8f8;
 }
 
-/* 画面上部の「人生を変えるフリマアプリ」帯部分 */
+/* 画面上部の「楽しみを増やすアプリ」帯部分 */
 .title-contents {
   width: 100vw;
   background-image: image-url('furima-header01.png');
@@ -27,7 +27,7 @@ a {
 }
 
 .service-explain {
-  font-size: 2.5vh;
+  font-size: 3.0vh;
   line-height: 40px;
 }
 
@@ -45,11 +45,11 @@ a {
   height: 9vh;
 }
 
-/* //画面上部の「人生を変えるフリマアプリ」帯部分 */
+/* //画面上部の「楽しみを増やすアプリ」帯部分 */
 
-/* 商品一覧 */
+/* 投稿一覧 */
 
-.item-contents {
+.post-contents {
   background-color: #FFF;
   display: flex;
   flex-direction: column;
@@ -57,55 +57,63 @@ a {
   padding: 10vh 0;
 }
 
-.item-contents>.title {
-  font-size: 5vh;
+.post-contents>.title {
+  font-size: 2.5vh;
   line-height: 1.4;
   font-weight: bold;
 }
 
-.item-contents>.subtitle {
-  font-size: 3vh;
+.post-contents>.subtitle {
+  font-size: 2vh;
   margin: 1vh 0;
-  text-decoration: none;
+  text-decoration: underline;
   color: #3ccace;
   font-weight: bold;
 }
 
-.item-lists {
+.post-lists {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  // justify-content: center;
 }
 
-.item-lists>.list {
+.post-lists>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+  list-style: none;
 }
 
 
-.item-img-content {
+.post-img-content {
   position: relative;
 }
 
-.item-img {
-  width: 33vh;
+.post-img {
+  width: 33vw;
   height: 33vh;
+  object-fit: contain;
+}
+
+.post-video{
+  width: 33vw;
+  height: 33vh;
+  object-fit: contain;
 }
 
 
-.item-info {
+.post-info {
   background-color: #FFF;
   color: black;
   padding: 1vw;
 }
 
-.item-name {
+.post-name {
   font-size: 2.5vh;
 }
 
-.item-price {
+.post-price {
   font-size: 1.5vh;
   display: flex;
   justify-content: space-between;
