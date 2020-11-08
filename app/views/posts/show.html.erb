@@ -1,5 +1,14 @@
 <%= render "shared/header" %>
 
+    <div class="links">
+    <a href="#" class="change-post-btn">
+      ＜ 前の投稿
+    </a>
+    <a href="#" class="change-post-btn">
+      後ろの投稿 ＞
+    </a>
+  </div>
+
 <%# 投稿の概要 %>
 <div class="post-show">
   <div class="post-box">
@@ -36,10 +45,11 @@
     </div>
   </div>
   <%# /商品の概要 %>
-
+ <%# /コメント欄%>
   <div class="comment-box">
+  <%= form_with(model: [@post,@comment], local: true) do |f|%>
     <form>
-      <textarea class="comment-text"></textarea>
+      <%= f.text_field :text, class:"comment-text"%>  
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -49,17 +59,19 @@
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
       </button>
+      <%end%>
     </form>
+    <%# /コメントを表示%>
+    <h3>コメント欄</h3>
+    <% @comments.each do |t| %>
+      <li class="comments_list">
+      nama
+      <%#= link_to t.user.neme, user_path(t.user), class: :comment_user %>
+      　<%= t.text%>
+      </li>
+    <% end %>
+    <%# //コメントを表示%>
   </div>
-  <div class="links">
-    <a href="#" class="change-post-btn">
-      ＜ 前の投稿
-    </a>
-    <a href="#" class="change-post-btn">
-      後ろの投稿 ＞
-    </a>
-  </div>
-  <a href="#" class='another-post'><%= %>をもっと見る</a>
-</div>
+  <%#　コメント欄%>
 
 <%= render "shared/footer" %>
