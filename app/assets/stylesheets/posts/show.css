@@ -1,6 +1,6 @@
 /* 商品の概要 */
 
-.item-show {
+.post-show {
   background-color: #f8f8f8;
   width: 100vw;
   display: flex;
@@ -9,7 +9,7 @@
   padding: 5vh 0;
 }
 
-.item-box {
+.post-box {
   background-color: #FFF;
   width: 70vw;
   min-width: 1200px;
@@ -19,13 +19,13 @@
   align-items: center;
 }
 
-.item-box>.name {
+.post-box>.name {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
 
-.item-box-img {
+.post-box-img {
   height: 50vh;
   width: 60vw;
   min-height: 500px;
@@ -33,24 +33,24 @@
   object-fit: contain;
 }
 
-.item-price-box {
+.post-price-box {
   margin: 25px 0px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.item-price-box>.item-price {
+.post-price-box>.post-price {
   font-size: 4vh;
   font-weight: bold;
 }
 
-.item-price-box>.item-postage {
+.post-price-box>.post-postage {
   font-size: 16px;
 }
 
 
-.item-red-btn {
+.post-red-btn {
   text-align: center;
   background-color: #ea352d;
   font-size: 24px;
@@ -64,7 +64,7 @@
   font-size: 20px;
 }
 
-.item-destroy {
+.post-destroy {
   background-color: lightgray;
   text-align: center;
   font-size: 24px;
@@ -73,7 +73,7 @@
   padding: 2vh 10vw;
 }
 
-.item-explain-box {
+.post-explain-box {
   font-size: 18px;
   margin: 40px 0px;
 }
@@ -83,7 +83,7 @@
   width: 100%;
 }
 
-.detail-item {
+.detail-post {
   width: 20%;
   background-color: #eee;
   border: 1px solid #dedede;
@@ -190,13 +190,13 @@
 
 }
 
-.change-item-btn {
+.change-post-btn {
   font-size: 30px;
   text-decoration: none;
   color: #3CCACE;
 }
 
-.another-item {
+.another-post {
   display: block;
   margin: 30px 0px 8px;
   color: #3CCACE;

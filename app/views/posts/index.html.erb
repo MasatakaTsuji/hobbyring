@@ -35,13 +35,10 @@
         <%end%>
         <div class='post-info'>
           <h3 class='post-name'>
-            <%= link_to post.text %>
+            <%= link_to post.text , post_path(post.id)%>
           </h3>
-          <div class='post-price'>
-             <span><%#= item.selling_price %>円<br>(税込み)</span>
             <div class='star-btn'>
-              <%#= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+              <%= image_tag "star.png", class:"star-icon" %>
             </div>
           </div>
         </div>

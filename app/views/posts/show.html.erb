@@ -1,71 +1,28 @@
 <%= render "shared/header" %>
 
-<%# 商品の概要 %>
-<div class="item-show">
-  <div class="item-box">
+<%# 投稿の概要 %>
+<div class="post-show">
+  <div class="post-box">
     <h2 class="name">
-      <%= @item.name %>
+      <%=  %>
     </h2>
-    <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
-       
-      <%if @item.order.present?%>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
-      <%end%>
+    <div class='post-img-content'>
+      <%#= image_tag @post.video ,class:"post-box-img" %>
+      <video src="<%= rails_blob_path(@post.video) %>" type="video/mp4" controls class = "post-box-img"></video>
 
-    </div>
-    <div class="item-price-box">
-      <span class="item-price">
-        <%= @item.selling_price%> 
-      </span>
-      <span class="item-postage">
-        (税込) 送料込み
-      </span>
     </div>
     
-    <%if @item.order.blank?%>
-     <%if user_signed_in? && current_user.id == @item.user_id%>
-     <%= link_to '商品の編集',edit_item_path , class: "item-red-btn" %>
+    <%#if @post.order.blank?%>
+     <%if user_signed_in? && current_user.id == @post.user_id%>
+     <%= link_to '商品の編集',edit_post_path , class: "post-red-btn" %>
      <p class='or-text'>or</p>
-     <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
-     <%else%>
-      <%= link_to '購入画面に進む',  item_orders_path(@item) ,class:"item-red-btn"%>
+     <%= link_to '削除', post_path, method: :delete, class:'post-destroy' %>
      <%end%>
-    <%end%>
-  
 
-    <div class="item-explain-box">
-      <span><%= @item.description %></span>
+    <div class="post-explain-box">
+      <span><%= @post.text %></span>
     </div>
     <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= @item.user.nickname %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.status.name  %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.burden.name%></td>
-        </tr>
-        <tr>
-          <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefecture.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.ship_date.name %></td>
-        </tr>
-      </tbody>
     </table>
     <div class="option">
       <div class="favorite-btn">
@@ -95,14 +52,14 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
+    <a href="#" class="change-post-btn">
+      ＜ 前の投稿
     </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
+    <a href="#" class="change-post-btn">
+      後ろの投稿 ＞
     </a>
   </div>
-  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+  <a href="#" class='another-post'><%= %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
