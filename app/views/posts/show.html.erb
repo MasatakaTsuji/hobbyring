@@ -24,7 +24,6 @@
     <%#if @post.order.blank?%>
      <%if user_signed_in? && current_user.id == @post.user_id%>
      <%= link_to '商品の編集',edit_post_path , class: "post-red-btn" %>
-     <p class='or-text'>or</p>
      <%= link_to '削除', post_path, method: :delete, class:'post-destroy' %>
      <%end%>
 
@@ -49,7 +48,7 @@
   <div class="comment-box">
   <%= form_with(model: [@post,@comment], local: true) do |f|%>
     <form>
-      <%= f.text_field :text, class:"comment-text"%>  
+      <%= f.text_field :text, class:"comment-text", id:"comments-text"%>  
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -62,6 +61,7 @@
       <%end%>
     </form>
     <%# /コメントを表示%>
+    <div id="comment"> </div>
     <h3>コメント欄</h3>
     <% @comments.each do |t| %>
       <li class="comments_list">

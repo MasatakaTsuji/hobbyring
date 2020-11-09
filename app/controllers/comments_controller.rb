@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
-    redirect_to posts_path(comment_params)
+    if @comment.save
+      ActionCable.server.broadcast 'comment_channel', content: @comment
+    else
+      redirect_to post_path
+    end
   end
 
   def show
