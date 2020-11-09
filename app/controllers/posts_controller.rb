@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only:[:edit, :update,:show, :destroy]
   def index
     @post = Post.all
   end
@@ -18,16 +19,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments
   end
 
   def edit
-    @post = Post.find(params[:id])
     redirect_to root_path unless current_user == @post.user
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to action: :show
     else
@@ -36,7 +36,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if current_user == @post.user
       @post.destroy
       redirect_to root_path
@@ -47,5 +46,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:text, :video).merge(user_id: 1)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
