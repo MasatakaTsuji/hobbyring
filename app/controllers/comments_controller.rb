@@ -8,8 +8,13 @@ class CommentsController < ApplicationController
     end
   end
 
-  def show
-    @comments = @post.comments
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    if current_user == @comment.user
+      @comment.destroy
+      redirect_to @post
+    end
   end
 
   private

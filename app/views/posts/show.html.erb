@@ -65,9 +65,10 @@
     <h3>コメント欄</h3>
     <% @comments.each do |t| %>
       <li class="comments_list">
-      nama
+        nama
       <%#= link_to t.user.neme, user_path(t.user), class: :comment_user %>
       　<%= t.text%>
+      <%= link_to '削除',  post_comment_path(@post.id,t.id), method: :delete, lass:'comennt_delete'%>
       </li>
     <% end %>
     <%# //コメントを表示%>

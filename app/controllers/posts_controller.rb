@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit update show destroy]
+  before_action :set_post, only:[:edit, :update,:show, :destroy]
   def index
     @post = Post.all
   end
@@ -36,7 +36,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # @post = Post.find(params[:id])
     if current_user == @post.user
       @post.destroy
       redirect_to root_path
