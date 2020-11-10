@@ -17,13 +17,15 @@
     </h2>
     <div class='post-img-content'>
       <%#= image_tag @post.video ,class:"post-box-img" %>
-      <%if @post.image.content_type.include?("video")%>
-        <video src="<%= rails_blob_path(@post.image) %>" type="video/mp4" controls class = "post-video"></video>
-      <%elsif @post.image.content_type.include?("image")%>
-        <img src="<%= rails_blob_path(@post.image)%>"class = "item-img">
+      <% @post.images.each do |image| %>
+        <%if image.content_type.include?("video")%>
+          <video src="<%= rails_blob_path(image) %>" type="video/mp4" controls class = "post-video"></video>
+        <%elsif image.content_type.include?("image")%>
+          <%= image_tag image, class:'image-img' %>
+        <% end %>
       <%end%>
     </div>
-    
+
     <%#if @post.order.blank?%>
      <%if user_signed_in? && current_user.id == @post.user_id%>
      <%= link_to '商品の編集',edit_post_path , class: "post-red-btn" %>
