@@ -17,8 +17,11 @@
     </h2>
     <div class='post-img-content'>
       <%#= image_tag @post.video ,class:"post-box-img" %>
-      <video src="<%= rails_blob_path(@post.video) %>" type="video/mp4" controls class = "post-box-img"></video>
-
+      <%if @post.image.content_type.include?("video")%>
+        <video src="<%= rails_blob_path(@post.image) %>" type="video/mp4" controls class = "post-video"></video>
+      <%elsif @post.image.content_type.include?("image")%>
+        <img src="<%= rails_blob_path(@post.image)%>"class = "item-img">
+      <%end%>
     </div>
     
     <%#if @post.order.blank?%>

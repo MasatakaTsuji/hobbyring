@@ -27,13 +27,14 @@
 
     <% @post.each do |post| %>
      <%= link_to post_path(post.id) do%>
-      <% if post.video.attached? %>
         <li class='list'>
         <div class='post-img-content'>
-          <video src="<%= rails_blob_path(post.video) %>" type="video/mp4" controls class = "post-video"></video>
-        </div>
-      <%# else if post.imag.attached?%>
+      <%if post.images.content_type.include?("video")%>
+        <video src="<%= rails_blob_path(post.image) %>" type="video/mp4" controls class = "post-video"></video>
+      <%elsif post.images.content_type.include?("image")%>
+        <img src="<%= rails_blob_path(post.image)%>"class = "item-img">
       <%end%>
+        </div>
         <div class='post-info'>
           <h3 class='post-name'>
           post.text
