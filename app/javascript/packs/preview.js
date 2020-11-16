@@ -6,7 +6,12 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       const imageElement = document.createElement('div');
       imageElement.setAttribute('class', "image-element")
       let imageElementNum = document.querySelectorAll('.image-element').length
+      // if(){
       const blobImage = document.createElement('img');
+      // }
+      // if(){
+      // const blobImage = document.createElement('video');
+      //  }
       blobImage.setAttribute('src',blob);
       const inputHTML = document.createElement('input')
       inputHTML.setAttribute('id', `item_image_${imageElementNum}`)
@@ -23,21 +28,14 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
         createImageHTML(blob)
       })
     };
-
-    // const createVideoHTML = (blob1) => {
-    //   const videoElement = document.createElement('div');
-    //   const blob1Video = document.createElement('video');
-    //   blob1Video.setAttribute('src',blob1);
-    //   videoElement.appendChild(blob1Video);
-    //   VideoList.appendChild(videoElement);
-    // };
-    
     document.getElementById('item-image').addEventListener('change', function(e){ 
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
+      // const image = 'jpg/.jpeg/.JPG/.JPEG/.jpe/.jfif/.pjpeg/.pjp/.png/.gif/.tiff/.tif/.webp/	.svg/.svgz'
+      // const video = ''
 
       createImageHTML(blob);
-      // createVideoHTML(blob1);
+
     });
   });
 }
