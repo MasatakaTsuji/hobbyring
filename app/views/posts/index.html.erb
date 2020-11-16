@@ -27,13 +27,16 @@
 
     <% @post.each do |post| %>
      <%= link_to post_path(post.id) do%>
-      <% if post.video.attached? %>
         <li class='list'>
         <div class='post-img-content'>
-          <video src="<%= rails_blob_path(post.video) %>" type="video/mp4" controls class = "post-video"></video>
-        </div>
-      <%# else if post.imag.attached?%>
+      <% post.images.each do |image| %>
+        <%if image.content_type.include?("video")%>
+          <video src="<%= rails_blob_path(image) %>" type="video/mp4" controls class = "post-video"></video>
+        <%elsif image.content_type.include?("image")%>
+          <%= image_tag image, class:'image-img' %>
+        <% end %>
       <%end%>
+        </div>
         <div class='post-info'>
           <h3 class='post-name'>
           post.text
@@ -43,9 +46,9 @@
             </div>
           </div>
         </div>
+         <%end%>
+        <%end%>
       </li>
-      <%end%>
-    <% end %>
     </ul>
   </div>
   <%# /商品一覧 %>
