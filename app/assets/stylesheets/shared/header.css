@@ -80,7 +80,6 @@
 
 .user-nickname {
   text-decoration: none;
-  margin-right: 3vw;
   color: #333333;
   font-weight: bold;
 }
@@ -88,6 +87,7 @@
 
 .logout {
   text-decoration: none;
+  margin-right: 3vw;
   color: #333333;
 }
 
