@@ -1,0 +1,35 @@
+<%= render "shared/second-header"%>
+
+
+<%= form_with model: @user, class: 'registration-main', local: true do |f| %>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      会員情報入力
+    </h1>
+  </div>
+
+  <%= render 'shared/error_messages', model: f.object %>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">ニックネーム</label>
+    </div>
+    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) HobbyRing太郎"%>
+  </div>
+  <div class="form-group">
+    <div class="form-text-wrap">
+      <label class="form-text">自己紹介</label>
+      <%= f.text_area :usertext,class:"input-default",id:"text",placeholder:"よろしくお願いします。"%>
+    </div>
+  </div>
+
+  <div class='register-btn'>
+    <%= f.submit "変更" ,class:"register-red-btn" %>
+  </div>
+  <p class='register-info'>本人情報の登録について</p>
+</div>
+<% end %>
+
+<%= render "shared/second-footer"%>
