@@ -1,0 +1,60 @@
+<%= render "shared/second-header"%>
+<div class="icon">
+  <li class="user__img">アイコン</li>
+  <li><%= link_to '編集',  edit_user_path, class: "user__edit" %></li>
+</div>
+<div class="main_user">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%= "#{@user.nickname}さんの情報"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">ニックネーム</th>
+            <td class="table__col2"><%= @user.nickname%></td>
+          </tr>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <%if !@user.usertext.blank?%>
+            <td class="table__col2"><%= @user.usertext %></td>
+            <%else%>
+            <td class="table__col2">よろしくお願いします</td>
+            <%end%>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="page-heading">
+        <%=link_to '投稿',new_post_path, class: "subtitle"%>
+      </h2>
+      <div class="user__card">
+        <% @user.posts.each do |post| %>
+        <li class='list'>
+        <%= link_to post_path(post.id) do%>
+          <div class='post-img-content'>
+          <% post.images.each do |image| %>
+           <%if image.content_type.include?("video")%>
+             <video src="<%= rails_blob_path(image)%>" type="video/mp4" controls class = "post-video" ></video>
+           <%elsif image.content_type.include?("image")%>
+             <%= image_tag(image, class: "post-img") %>
+           <% end %>
+          <%end%>
+         </div>
+
+         <div class='post-info'>
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
+          </div>
+         </div>
+
+        <%end%>
+      </li>
+    <%end%>
+    </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/second-footer" %>

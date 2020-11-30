@@ -1,0 +1,24 @@
+  <div class='post-contents'>
+
+        <h4 class='post-name'>
+          <%=link_to "#{post.user.nickname}",user_path(post.user) %>
+        </h4>
+
+        <%= link_to post_path(post.id) do%>
+          <div class='post-img-content'>
+          <% post.images.each do |image| %>
+           <%if image.content_type.include?("video")%>
+             <video src="<%= rails_blob_path(image)%>" type="video/mp4" controls class = "post-video" ></video>
+           <%elsif image.content_type.include?("image")%>
+             <%= image_tag(image, class: "post-img") %>
+           <% end %>
+          <%end%>
+         </div>
+
+         <div class='post-info'>
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
+          </div>
+         </div>
+        <%end%>
+</div>

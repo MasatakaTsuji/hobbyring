@@ -17,7 +17,7 @@
       <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+  <%# /画面上部の「人生を変える」帯部分  %>
 
   <%# 投稿一覧 %>
   <div class='post-contents'>
@@ -26,33 +26,36 @@
     <ul class='post-lists'>
 
     <% @post.each do |post| %>
-     <%= link_to post_path(post.id) do%>
-        <li class='list'>
-        <div class='post-img-content'>
-      <% post.images.each do |image| %>
-        <%if image.content_type.include?("video")%>
-          <video src="<%= rails_blob_path(image) %>" type="video/mp4" controls class = "post-video"></video>
-        <%elsif image.content_type.include?("image")%>
-          <%= image_tag image, class:'image-img' %>
-        <% end %>
-      <%end%>
-        </div>
-        <div class='post-info'>
-          <h3 class='post-name'>
-          post.text
-          </h3>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-            </div>
+      <li class='list'>
+
+          <h4 class='post-name'>
+            <%=link_to "#{post.user.nickname}",user_path(post.user) %>
+          </h4>
+
+        <%= link_to post_path(post.id) do%>
+          <div class='post-img-content'>
+          <% post.images.each do |image| %>
+           <%if image.content_type.include?("video")%>
+             <video src="<%= rails_blob_path(image)%>" type="video/mp4" controls class = "post-video" ></video>
+           <%elsif image.content_type.include?("image")%>
+             <%= image_tag(image, class: "post-img") %>
+           <% end %>
+          <%end%>
+         </div>
+
+         <div class='post-info'>
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
           </div>
-        </div>
-         <%end%>
+         </div>
+
         <%end%>
       </li>
+    <%end%>
     </ul>
   </div>
-  <%# /商品一覧 %>
 </div>
+  <%# /投稿一覧 %>
 <div class='purchase-btn'>
   <%= link_to '投稿する',new_post_path , class: "purchase-btn-text" %>
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
